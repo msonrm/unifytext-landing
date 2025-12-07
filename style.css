@@ -161,6 +161,54 @@ body[data-lang="ja"] .lang-ja.block {
     color: white;
 }
 
+/* What is Section */
+.what-is {
+    padding: 100px 20px;
+    background: var(--bg-white);
+    text-align: center;
+}
+
+.what-is h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.what-is-intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.what-is-list {
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.what-is-list li {
+    padding: 15px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.what-is-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
 /* Features Section */
 .features {
     padding: 120px 20px;
