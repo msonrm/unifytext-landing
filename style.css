@@ -397,10 +397,10 @@ body[data-lang="ja"] .support .container {
     flex-wrap: wrap;
 }
 
-/* Japanese version: vertical stack, left-aligned */
+/* Japanese version: vertical stack, centered */
 body[data-lang="ja"] .donation-buttons {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
 }
 
