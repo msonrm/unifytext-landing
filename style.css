@@ -70,13 +70,25 @@ body[data-lang="ja"] .lang-ja {
     display: inline !important;
 }
 
-/* For block-level language elements (not currently used but available) */
-body[data-lang="en"] .lang-en.block {
+/* For block-level language elements */
+body[data-lang="en"] .lang-en.block,
+body[data-lang="en"] div.lang-en,
+body[data-lang="en"] section.lang-en {
     display: block !important;
 }
 
-body[data-lang="ja"] .lang-ja.block {
+body[data-lang="ja"] .lang-ja.block,
+body[data-lang="ja"] div.lang-ja,
+body[data-lang="ja"] section.lang-ja {
     display: block !important;
+}
+
+body[data-lang="en"] .donation-buttons.lang-en {
+    display: flex !important;
+}
+
+body[data-lang="ja"] .donation-buttons.lang-ja {
+    display: flex !important;
 }
 
 .container {
@@ -310,6 +322,22 @@ body[data-lang="ja"] .lang-ja.block {
     line-height: 1.8;
 }
 
+.donation-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-donation-main {
+    min-width: 250px;
+}
+
+.btn-donation-sub {
+    min-width: 200px;
+    font-size: 1rem;
+}
+
 /* Footer */
 .footer {
     padding: 60px 20px;
@@ -366,5 +394,16 @@ body[data-lang="ja"] .lang-ja.block {
     .features .container {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    
+    .donation-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-donation-main,
+    .btn-donation-sub {
+        width: 100%;
+        max-width: 300px;
     }
 }
