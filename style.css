@@ -180,6 +180,15 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     text-align: center;
 }
 
+/* Japanese version: left-aligned */
+body[data-lang="ja"] .what-is {
+    text-align: left;
+}
+
+body[data-lang="ja"] .what-is .container {
+    max-width: 800px;
+}
+
 .what-is h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
@@ -196,11 +205,21 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     margin-right: auto;
 }
 
+body[data-lang="ja"] .what-is-intro {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .what-is-list {
     list-style: none;
     max-width: 600px;
     margin: 0 auto;
     text-align: left;
+}
+
+body[data-lang="ja"] .what-is-list {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .what-is-list li {
@@ -227,15 +246,33 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     background: var(--bg-white);
 }
 
+/* Japanese version: left-aligned */
+body[data-lang="ja"] .features {
+    text-align: left;
+}
+
+body[data-lang="ja"] .features .container {
+    max-width: 800px;
+}
+
 .features .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 60px;
 }
 
+body[data-lang="ja"] .features .container {
+    grid-template-columns: 1fr;
+}
+
 .feature {
     text-align: center;
     padding: 40px 20px;
+}
+
+body[data-lang="ja"] .feature {
+    text-align: left;
+    padding: 20px 0;
 }
 
 .feature-icon {
@@ -262,6 +299,15 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     text-align: center;
 }
 
+/* Japanese version: left-aligned */
+body[data-lang="ja"] .download {
+    text-align: left;
+}
+
+body[data-lang="ja"] .download .container {
+    max-width: 800px;
+}
+
 .download h2 {
     font-size: 2.5rem;
     margin-bottom: 60px;
@@ -276,11 +322,21 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     margin: 0 auto;
 }
 
+body[data-lang="ja"] .platform-grid {
+    margin-left: 0;
+    margin-right: 0;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
 .platform {
     background: var(--bg-white);
     padding: 40px 20px;
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-lang="ja"] .platform {
+    padding: 30px 20px;
 }
 
 .platform:hover {
@@ -309,6 +365,15 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     text-align: center;
 }
 
+/* Japanese version: left-aligned */
+body[data-lang="ja"] .support {
+    text-align: left;
+}
+
+body[data-lang="ja"] .support .container {
+    max-width: 800px;
+}
+
 .support h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -327,6 +392,13 @@ body[data-lang="ja"] .donation-buttons.lang-ja {
     gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+/* Japanese version: vertical stack, left-aligned */
+body[data-lang="ja"] .donation-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .btn-donation-main {
