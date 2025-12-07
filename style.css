@@ -21,6 +21,63 @@ body {
     overflow-x: hidden;
 }
 
+/* Language Switcher */
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 8px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lang-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.lang-btn:hover {
+    background: var(--bg-light);
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Language Display */
+.lang-en, .lang-ja {
+    display: none;
+}
+
+body[data-lang="en"] .lang-en {
+    display: inline;
+}
+
+body[data-lang="ja"] .lang-ja {
+    display: inline;
+}
+
+body[data-lang="en"] .lang-en.block {
+    display: block;
+}
+
+body[data-lang="ja"] .lang-ja.block {
+    display: block;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;

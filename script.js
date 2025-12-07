@@ -1,3 +1,65 @@
+// Language Management
+const languageManager = {
+    defaultLang: 'en',
+    currentLang: 'en',
+
+    init() {
+        // Detect browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        const isJapanese = browserLang.toLowerCase().startsWith('ja');
+        
+        // Check localStorage for saved preference
+        const savedLang = localStorage.getItem('preferredLang');
+        
+        // Set language priority: saved > browser > default
+        this.currentLang = savedLang || (isJapanese ? 'ja' : 'en');
+        
+        // Apply language
+        this.setLanguage(this.currentLang);
+        
+        // Set up language switcher buttons
+        this.setupSwitcher();
+    },
+
+    setLanguage(lang) {
+        this.currentLang = lang;
+        document.body.setAttribute('data-lang', lang);
+        document.documentElement.setAttribute('lang', lang);
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+        
+        // Save preference
+        localStorage.setItem('preferredLang', lang);
+        
+        // Update page title and meta
+        if (lang === 'ja') {
+            document.title = 'UnifyText - 書いたら、どこでも、すぐそこに';
+            document.querySelector('meta[name="description"]').content = 
+                '暗号化されたテキスト同期。広告なし。サブスクなし。';
+        } else {
+            document.title = 'UnifyText - Copy here, Paste everywhere, Instantly';
+            document.querySelector('meta[name="description"]').content = 
+                'Seamless encrypted text sync across all your devices. No ads. No subscription.';
+        }
+    },
+
+    setupSwitcher() {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setLanguage(btn.dataset.lang);
+            });
+        });
+    }
+};
+
+// Initialize language on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    languageManager.init();
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
