@@ -1,4 +1,22 @@
-// Language Management
+// Language Management - Initialize immediately
+(function() {
+    // Detect browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    const isJapanese = browserLang.toLowerCase().startsWith('ja');
+    
+    // Check localStorage for saved preference
+    const savedLang = localStorage.getItem('preferredLang');
+    
+    // Set language priority: saved > browser > default
+    const currentLang = savedLang || (isJapanese ? 'ja' : 'en');
+    
+    // Apply language immediately
+    document.documentElement.setAttribute('lang', currentLang);
+    if (document.body) {
+        document.body.setAttribute('data-lang', currentLang);
+    }
+})();
+
 const languageManager = {
     defaultLang: 'en',
     currentLang: 'en',
