@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security - UnifyText</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1 { border-bottom: 2px solid #333; padding-bottom: 0.5rem; }
+    h2 { margin-top: 2.5rem; color: #222; }
+    h3 { color: #444; margin-top: 1.5rem; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+    th { background: #f5f5f5; }
+    code { background: #f0f0f0; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+    .lang-en { color: #555; }
+    a { color: #0066cc; }
+  </style>
+</head>
+<body>
 
+<h1>Security / セキュリティ</h1>
+
+<!-- ===== 1. Summary ===== -->
+<h2>1. 概要 / Overview</h2>
+
+<h3>日本語</h3>
+<p>
+UnifyTextはエンドツーエンド暗号化（E2EE）を採用しています。あなたが送受信するテキストは、あなたの端末上で暗号化され、サーバーには暗号化されたデータのみが保存されます。開発者を含め、誰もこのデータを復号することはできません。
+</p>
+
+<h3 class="lang-en">English</h3>
+<p class="lang-en">
+UnifyText uses end-to-end encryption (E2EE). The text you send and receive is encrypted on your device, and only encrypted data is stored on our servers. No one, including the developer, can decrypt this data.
+</p>
+
+<!-- ===== 2. Encryption ===== -->
+<h2>2. 暗号化の仕組み / Encryption Method</h2>
+
+<h3>日本語</h3>
+<table>
+  <tr><th>項目</th><th>仕様</th></tr>
+  <tr><td>アルゴリズム</td><td>AES-256-GCM</td></tr>
+  <tr><td>鍵長</td><td>256ビット</td></tr>
+  <tr><td>IV（初期化ベクトル）</td><td>12バイト（暗号論的乱数生成）</td></tr>
+  <tr><td>認証タグ</td><td>16バイト</td></tr>
+</table>
+<p>
+AES-GCMは認証付き暗号化方式であり、データの機密性と完全性の両方を保護します。暗号化されたデータが改ざんされた場合、復号時に検出されます。
+</p>
+
+<h3 class="lang-en">English</h3>
+<table>
+  <tr><th>Item</th><th>Specification</th></tr>
+  <tr><td>Algorithm</td><td>AES-256-GCM</td></tr>
+  <tr><td>Key Length</td><td>256-bit</td></tr>
+  <tr><td>IV (Initialization Vector)</td><td>12 bytes (CSPRNG)</td></tr>
+  <tr><td>Authentication Tag</td><td>16 bytes</td></tr>
+</table>
+<p class="lang-en">
+AES-GCM is an authenticated encryption scheme that protects both confidentiality and integrity of data. Any tampering with encrypted data will be detected during decryption.
+</p>
+
+<!-- ===== 3. Key Management ===== -->
+<h2>3. 鍵管理 / Key Management</h2>
+
+<h3>日本語</h3>
+<p>
+UnifyTextは「マスターキー共有方式」を採用しています。
+</p>
+<ul>
+  <li><strong>鍵の生成</strong>: 最初のデバイスでマスターキー（256ビット）を生成</li>
+  <li><strong>鍵の共有</strong>: QRコードを通じて他のデバイスに共有（オフライン）</li>
+  <li><strong>鍵の保存</strong>: 各デバイスの安全なストレージに保存（iOS: Keychain / Android: EncryptedSharedPreferences）</li>
+  <li><strong>サーバーへの送信</strong>: マスターキーはサーバーに送信されません</li>
+</ul>
+<p>
+QRコードには5分間の有効期限があり、同一アカウントでログインしたデバイス間でのみペアリングが可能です。
+</p>
+
+<h3 class="lang-en">English</h3>
+<p class="lang-en">
+UnifyText uses a "master key sharing" approach.
+</p>
+<ul class="lang-en">
+  <li><strong>Key Generation</strong>: A master key (256-bit) is generated on the first device</li>
+  <li><strong>Key Sharing</strong>: Shared to other devices via QR code (offline)</li>
+  <li><strong>Key Storage</strong>: Stored in each device's secure storage (iOS: Keychain / Android: EncryptedSharedPreferences)</li>
+  <li><strong>Server Transmission</strong>: The master key is never sent to the server</li>
+</ul>
+<p class="lang-en">
+QR codes expire after 5 minutes, and pairing is only possible between devices logged into the same account.
+</p>
+
+<!-- ===== 4. What is Encrypted ===== -->
+<h2>4. 暗号化される情報・されない情報 / What Is and Isn't Encrypted</h2>
+
+<h3>日本語</h3>
+<table>
+  <tr><th>暗号化される（サーバーで読めない）</th><th>暗号化されない（サーバーで読める）</th></tr>
+  <tr>
+    <td>
+      テキスト内容<br>
+      デバイス名<br>
+      OS種別
+    </td>
+    <td>
+      FCMトークン（プッシュ通知用）<br>
+      デバイスID（UUID v4）<br>
+      タイムスタンプ
+    </td>
+  </tr>
+</table>
+<p>
+デバイスIDはランダムに生成されるUUIDであり、デバイス名やOS情報は暗号化されているため、平文で保存される情報から個人を特定することはできません。
+</p>
+
+<h3 class="lang-en">English</h3>
+<table>
+  <tr><th>Encrypted (Unreadable by Server)</th><th>Not Encrypted (Readable by Server)</th></tr>
+  <tr>
+    <td>
+      Text content<br>
+      Device name<br>
+      OS type
+    </td>
+    <td>
+      FCM token (for push notifications)<br>
+      Device ID (UUID v4)<br>
+      Timestamp
+    </td>
+  </tr>
+</table>
+<p class="lang-en">
+Device IDs are randomly generated UUIDs, and since device names and OS information are encrypted, it is not possible to identify individuals from the plaintext data stored.
+</p>
+
+<!-- ===== 5. Threat Model ===== -->
+<h2>5. 脅威モデルと対策 / Threat Model and Countermeasures</h2>
+
+<h3>日本語</h3>
+<table>
+  <tr><th>脅威</th><th>対策</th></tr>
+  <tr><td>サーバーデータの漏洩</td><td>E2E暗号化（テキスト・デバイス情報）</td></tr>
+  <tr><td>QRコードの盗撮</td><td>5分間の有効期限、画面切り替え時のブラー処理</td></tr>
+  <tr><td>中間者攻撃</td><td>QRコードは同一空間での直接スキャンを前提</td></tr>
+  <tr><td>端末の紛失</td><td>リモートログアウト機能（有料版）</td></tr>
+  <tr><td>暗号文の入れ替え攻撃</td><td>AAD（Additional Authenticated Data）によるコンテキスト分離</td></tr>
+  <tr><td>スクリーンショット</td><td>iOS: SecureFieldOverlay / Android: FLAG_SECURE</td></tr>
+</table>
+
+<h3 class="lang-en">English</h3>
+<table>
+  <tr><th>Threat</th><th>Countermeasure</th></tr>
+  <tr><td>Server data breach</td><td>E2E encryption (text and device info)</td></tr>
+  <tr><td>QR code photography</td><td>5-minute expiration, blur on app switch</td></tr>
+  <tr><td>Man-in-the-middle attack</td><td>QR codes require direct scanning in same physical space</td></tr>
+  <tr><td>Device loss</td><td>Remote logout feature (Pro version)</td></tr>
+  <tr><td>Ciphertext substitution attack</td><td>Context separation via AAD (Additional Authenticated Data)</td></tr>
+  <tr><td>Screenshot capture</td><td>iOS: SecureFieldOverlay / Android: FLAG_SECURE</td></tr>
+</table>
+
+<!-- ===== 6. Limitations ===== -->
+<h2>6. 限界と注意事項 / Limitations and Notes</h2>
+
+<h3>日本語</h3>
+<p>
+UnifyTextは強力な暗号化を提供しますが、以下の限界があります。
+</p>
+<ul>
+  <li><strong>端末のセキュリティに依存</strong>: マルウェアに感染した端末や、ルート化/脱獄された端末では、マスターキーが漏洩する可能性があります</li>
+  <li><strong>鍵の復元は不可能</strong>: マスターキーを紛失した場合（端末の紛失、アプリの削除等）、暗号化されたデータを復元することはできません</li>
+  <li><strong>クリップボードの共有</strong>: テキストをクリップボードにコピーした後は、他のアプリからもアクセス可能になります</li>
+  <li><strong>メタデータの保護は限定的</strong>: 通信のタイミングや頻度は保護されません</li>
+</ul>
+
+<h3 class="lang-en">English</h3>
+<p class="lang-en">
+UnifyText provides strong encryption, but has the following limitations.
+</p>
+<ul class="lang-en">
+  <li><strong>Depends on device security</strong>: On devices infected with malware or rooted/jailbroken devices, the master key could potentially be compromised</li>
+  <li><strong>Key recovery is impossible</strong>: If you lose your master key (due to device loss, app deletion, etc.), encrypted data cannot be recovered</li>
+  <li><strong>Clipboard sharing</strong>: After copying text to the clipboard, it becomes accessible to other apps</li>
+  <li><strong>Limited metadata protection</strong>: Timing and frequency of communications are not protected</li>
+</ul>
+
+<!-- ===== 7. Technical Details ===== -->
+<h2>7. 技術的な詳細 / Technical Details</h2>
+
+<h3>日本語</h3>
+<p>より詳細な技術情報:</p>
+<ul>
+  <li><strong>AAD（追加認証データ）</strong>: メッセージには <code>unifytext:message:v1</code>、デバイス情報には <code>unifytext:device:v1</code> を使用</li>
+  <li><strong>QRコード形式</strong>: <code>UNIFYTEXT:1:&lt;base64url_payload&gt;</code></li>
+  <li><strong>文字数制限</strong>: 1回の送信につき20,000文字まで</li>
+  <li><strong>メッセージ保持期間</strong>: サーバー上のメッセージは自動削除されます</li>
+</ul>
+
+<h3 class="lang-en">English</h3>
+<p class="lang-en">More technical details:</p>
+<ul class="lang-en">
+  <li><strong>AAD (Additional Authenticated Data)</strong>: <code>unifytext:message:v1</code> for messages, <code>unifytext:device:v1</code> for device info</li>
+  <li><strong>QR Code Format</strong>: <code>UNIFYTEXT:1:&lt;base64url_payload&gt;</code></li>
+  <li><strong>Character Limit</strong>: Up to 20,000 characters per transmission</li>
+  <li><strong>Message Retention</strong>: Messages on the server are automatically deleted</li>
+</ul>
+
+<!-- ===== 8. Contact ===== -->
+<h2>8. お問い合わせ / Contact</h2>
+
+<h3>日本語</h3>
+<p>
+セキュリティに関するご質問や脆弱性の報告は、以下までご連絡ください。<br>
+開発者: Masao Narumi<br>
+メール: <a href="mailto:msonrm@gmail.com">msonrm@gmail.com</a>
+</p>
+
+<h3 class="lang-en">English</h3>
+<p class="lang-en">
+For security questions or vulnerability reports, please contact:<br>
+Developer: Masao Narumi<br>
+Email: <a href="mailto:msonrm@gmail.com">msonrm@gmail.com</a>
+</p>
+
+</body>
+</html>
