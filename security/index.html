@@ -77,7 +77,7 @@ UnifyTextは「マスターキー共有方式」を採用しています。
 <ul>
   <li><strong>鍵の生成</strong>: 最初のデバイスでマスターキー（256ビット）を生成</li>
   <li><strong>鍵の共有</strong>: QRコードを通じて他のデバイスに共有（オフライン）</li>
-  <li><strong>鍵の保存</strong>: 各デバイスの安全なストレージに保存（iOS: Keychain / Android: EncryptedSharedPreferences）</li>
+  <li><strong>鍵の保存</strong>: 各デバイスの安全なストレージに保存（iOS: Keychain / Android: Keystore）</li>
   <li><strong>サーバーへの送信</strong>: マスターキーはサーバーに送信されません</li>
 </ul>
 <p>
@@ -92,7 +92,7 @@ UnifyText uses a "master key sharing" approach.
 <ul class="lang-en">
   <li><strong>Key Generation</strong>: A master key (256-bit) is generated on the first device</li>
   <li><strong>Key Sharing</strong>: Shared to other devices via QR code (offline)</li>
-  <li><strong>Key Storage</strong>: Stored in each device's secure storage (iOS: Keychain / Android: EncryptedSharedPreferences)</li>
+  <li><strong>Key Storage</strong>: Stored in each device's secure storage (iOS: Keychain / Android: Keystore)</li>
   <li><strong>Server Transmission</strong>: The master key is never sent to the server</li>
 </ul>
 <p class="lang-en">
