@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -25,319 +26,301 @@
       text-decoration: underline;
     }
 
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid #d2d2d7;
-      z-index: 100;
-    }
-    .header-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1d1d1f;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    nav a {
-      color: #1d1d1f;
-      font-size: 0.875rem;
-    }
-    .lang-switch {
-      display: flex;
-      border: 1px solid #d2d2d7;
-      border-radius: 4px;
-      overflow: hidden;
-      font-size: 0.875rem;
-    }
-    .lang-switch button {
-      background: none;
-      border: none;
-      padding: 0.25rem 0.5rem;
-      cursor: pointer;
-      color: #86868b;
-      font-size: 0.875rem;
-    }
-    .lang-switch button:hover {
-      background: #f5f5f7;
-    }
-    .lang-switch button.active {
-      background: #1d1d1f;
-      color: #fff;
-    }
+```
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+nav a {
+  color: #1d1d1f;
+  font-size: 0.875rem;
+}
+.lang-switch {
+  display: flex;
+  border: 1px solid #d2d2d7;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+.lang-switch button {
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  color: #86868b;
+  font-size: 0.875rem;
+}
+.lang-switch button:hover {
+  background: #f5f5f7;
+}
+.lang-switch button.active {
+  background: #1d1d1f;
+  color: #fff;
+}
 
-    /* Hero */
-    .hero {
-      padding: 120px 1rem 80px;
-      text-align: center;
-      background: linear-gradient(180deg, #fbfbfd 0%, #fff 100%);
-    }
-    .hero-logo {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: #6e6e73;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .hero-image {
-      max-width: 800px;
-      width: 100%;
-      margin-top: 3rem;
-    }
+/* Hero */
+.hero {
+  padding: 120px 1rem 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #fbfbfd 0%, #fff 100%);
+}
+.hero-logo {
+  max-width: 100%;
+  width: 400px;
+  height: auto;
+  margin-bottom: 2rem;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.hero p {
+  font-size: 1.25rem;
+  color: #6e6e73;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hero-image {
+  max-width: 100%;
+  width: 800px;
+  height: auto;
+  margin-top: 3rem;
+  border-radius: 16px;
+}
 
-    /* Section Common */
-    section {
-      padding: 80px 1rem;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-    section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 3rem;
-      letter-spacing: -0.02em;
-    }
+/* Section Common */
+section {
+  padding: 80px 1rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+}
 
-    /* Features */
-    .features {
-      background: #f5f5f7;
-    }
-    .features-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 80px 1rem;
-    }
-    .features h2 {
-      margin-bottom: 3rem;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .feature-card {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-    }
-    .feature-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-    .feature-card p {
-      color: #6e6e73;
-      font-size: 1rem;
-    }
+/* Features */
+.features {
+  background: #f5f5f7;
+}
+.features-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 1rem;
+}
+.features h2 {
+  margin-bottom: 3rem;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.feature-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.feature-card p {
+  color: #6e6e73;
+  font-size: 1rem;
+}
 
-    /* How it works */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .step {
-      text-align: center;
-    }
-    .step-number {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
-      background: #1d1d1f;
-      color: #fff;
-      border-radius: 50%;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .step h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .step p {
-      color: #6e6e73;
-    }
+/* How it works */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.step {
+  text-align: center;
+}
+.step-number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: #1d1d1f;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.step h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.step p {
+  color: #6e6e73;
+}
 
-    /* Download */
-    .download {
-      text-align: center;
-      background: #f5f5f7;
-    }
-    .download-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 80px 1rem;
-    }
-    .store-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    .store-btn {
-      display: inline-block;
-      padding: 0.875rem 1.5rem;
-      background: #1d1d1f;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-    .store-btn:hover {
-      background: #424245;
-      text-decoration: none;
-    }
-    .store-btn.disabled {
-      background: #86868b;
-      cursor: not-allowed;
-    }
-    .store-status {
-      color: #6e6e73;
-      font-size: 0.875rem;
-      margin-top: 1rem;
-    }
+/* Download */
+.download {
+  text-align: center;
+  background: #f5f5f7;
+}
+.download-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 1rem;
+}
+.store-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.store-btn {
+  display: inline-block;
+  padding: 0.875rem 1.5rem;
+  background: #1d1d1f;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.store-btn:hover {
+  background: #424245;
+  text-decoration: none;
+}
+.store-btn.disabled {
+  background: #86868b;
+  cursor: not-allowed;
+}
+.store-status {
+  color: #6e6e73;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
 
-    /* Data Deletion */
-    .data-deletion {
-      text-align: center;
-    }
-    .data-deletion p {
-      color: #6e6e73;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+/* Data Deletion */
+.data-deletion {
+  text-align: center;
+}
+.data-deletion p {
+  color: #6e6e73;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-    /* Support */
-    .support {
-      text-align: center;
-    }
-    .support p {
-      color: #6e6e73;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .support-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .support-btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid #d2d2d7;
-      border-radius: 8px;
-      color: #1d1d1f;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
-    .support-btn:hover {
-      background: #f5f5f7;
-      text-decoration: none;
-    }
+/* Support */
+.support {
+  text-align: center;
+}
+.support p {
+  color: #6e6e73;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.support-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.support-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  color: #1d1d1f;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.support-btn:hover {
+  background: #f5f5f7;
+  text-decoration: none;
+}
 
-    /* Footer */
-    footer {
-      border-top: 1px solid #d2d2d7;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    .footer-inner {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-    .footer-links {
-      margin-bottom: 1rem;
-    }
-    .footer-links a {
-      color: #6e6e73;
-      margin: 0 1rem;
-      font-size: 0.875rem;
-    }
-    .footer-copy {
-      color: #86868b;
-      font-size: 0.75rem;
-    }
-    .footer-contact {
-      margin-top: 1rem;
-      font-size: 0.875rem;
-      color: #6e6e73;
-    }
+/* Footer */
+footer {
+  border-top: 1px solid #d2d2d7;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.footer-links {
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  color: #6e6e73;
+  margin: 0 1rem;
+  font-size: 0.875rem;
+}
+.footer-copy {
+  color: #86868b;
+  font-size: 0.75rem;
+}
+.footer-contact {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6e6e73;
+}
 
-    /* Placeholder images */
-    .placeholder {
-      background: #e8e8ed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #86868b;
-      font-size: 0.875rem;
-    }
-    .hero-logo.placeholder {
-      height: 100px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-image.placeholder {
-      height: 400px;
-      border-radius: 16px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+/* Language toggle */
+.lang-ja, .lang-en { display: none; }
+html[lang="ja"] .lang-ja { display: block; }
+html[lang="ja"] span.lang-ja { display: inline; }
+html[lang="en"] .lang-en { display: block; }
+html[lang="en"] span.lang-en { display: inline; }
 
-    /* Language toggle */
-    .lang-ja, .lang-en { display: none; }
-    html[lang="ja"] .lang-ja { display: block; }
-    html[lang="ja"] span.lang-ja { display: inline; }
-    html[lang="en"] .lang-en { display: block; }
-    html[lang="en"] span.lang-en { display: inline; }
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.75rem; }
+  .hero p { font-size: 1rem; }
+  section h2 { font-size: 1.5rem; }
+}
+```
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.75rem; }
-      .hero p { font-size: 1rem; }
-      section h2 { font-size: 1.5rem; }
-    }
   </style>
 </head>
 <body>
 
 <!-- Header -->
+
 <header>
   <div class="header-inner">
     <div class="logo">UnifyText</div>
@@ -353,9 +336,10 @@
 </header>
 
 <!-- Hero -->
+
 <section class="hero">
   <img src="images/logo.png" alt="UnifyText" class="hero-logo">
-  
+
   <h1>
     <span class="lang-ja">テキストが、すぐ届く。暗号化されて。</span>
     <span class="lang-en">Text arrives instantly. Encrypted.</span>
@@ -364,11 +348,12 @@
     <span class="lang-ja">iPhoneとAndroid、OSの壁を越えてテキストを共有。エンドツーエンド暗号化で、あなたのデータを守ります。</span>
     <span class="lang-en">Share text between iPhone and Android, across OS boundaries. End-to-end encryption keeps your data private.</span>
   </p>
-  
-  <img src="images/hero-devices.png" alt="UnifyText" class="hero-devices">
+
+  <img src="images/hero-devices.png" alt="UnifyText on iPhone and Android" class="hero-image">
 </section>
 
 <!-- Features -->
+
 <div class="features">
   <div class="features-inner">
     <h2>
@@ -411,6 +396,7 @@
 </div>
 
 <!-- How it works -->
+
 <section>
   <h2>
     <span class="lang-ja">使い方</span>
@@ -454,6 +440,7 @@
 </section>
 
 <!-- Download -->
+
 <div class="download">
   <div class="download-inner">
     <h2>
@@ -472,6 +459,7 @@
 </div>
 
 <!-- Data Deletion -->
+
 <section class="data-deletion">
   <h2>
     <span class="lang-ja">データの削除</span>
@@ -484,6 +472,7 @@
 </section>
 
 <!-- Support -->
+
 <section class="support">
   <h2>
     <span class="lang-ja">UnifyTextを支える</span>
@@ -500,6 +489,7 @@
 </section>
 
 <!-- Footer -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-links">
