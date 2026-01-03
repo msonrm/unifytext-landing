@@ -112,6 +112,21 @@
       margin-top: 3rem;
       border-radius: 16px;
     }
+    .video-container {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     /* Section Common */
     section {
@@ -141,8 +156,13 @@
     }
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
+    }
+    @media (max-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .feature-card {
       background: #fff;
@@ -344,6 +364,10 @@
   </p>
   
   <img src="images/hero-devices.png" alt="UnifyText on iPhone and Android" class="hero-image">
+  
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/5ToHk7IWQi4" title="UnifyText Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </section>
 
 <!-- Features -->
