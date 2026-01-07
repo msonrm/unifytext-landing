@@ -226,22 +226,12 @@
       flex-wrap: wrap;
       margin-top: 2rem;
     }
-    .store-btn {
-      display: inline-block;
-      padding: 0.875rem 1.5rem;
-      background: #1d1d1f;
-      color: #fff;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: background 0.2s;
+    .store-badge {
+      height: 50px;
+      transition: opacity 0.2s;
     }
-    .store-btn:hover {
-      background: #424245;
-      text-decoration: none;
-    }
-    .store-btn.disabled {
-      background: #86868b;
-      cursor: not-allowed;
+    .store-badge:hover {
+      opacity: 0.8;
     }
     .store-status {
       color: #6e6e73;
@@ -473,8 +463,12 @@
       <span class="lang-en">Download</span>
     </h2>
     <div class="store-buttons">
-      <a href="https://apps.apple.com/app/unifytext/id6756375313" class="store-btn" target="_blank" rel="noopener">App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=app.unifytext.unifytext" class="store-btn" target="_blank" rel="noopener">Google Play</a>
+      <a href="https://apps.apple.com/app/unifytext/id6756375313" target="_blank" rel="noopener">
+        <img src="images/app-store-badge.svg" alt="Download on the App Store" class="store-badge">
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=app.unifytext.unifytext" target="_blank" rel="noopener">
+        <img src="images/google-play-badge.png" alt="Get it on Google Play" class="store-badge">
+      </a>
     </div>
   </div>
 </div>
